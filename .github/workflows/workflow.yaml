@@ -272,7 +272,10 @@ jobs:
     steps:
       - name: Source checkout
         uses: actions/checkout@v4
+      - name: Enable TM1637 Driver
+        run: echo "#define ENABLE_DRIVER_TM1637 1" >> src/obk_config.h
 
+      
       - uses: actions/setup-python@v5
         if: ${{ matrix.platform == 'OpenBL602' || matrix.platform == 'OpenRTL8721DA' || matrix.platform == 'OpenRTL8720E' || matrix.platform == 'OpenRDA5981' }}
         with:
